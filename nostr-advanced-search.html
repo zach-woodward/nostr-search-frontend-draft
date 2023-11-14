@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nostr Advanced Search</title>
+    <style>
+        body {
+            font-family: Helvetica, Verdana, Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 20px;
+        }
+        .form-section {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1, h3 {
+            color: purple;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: black;
+        }
+        input[type="text"], select, input[type="checkbox"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #bbb;
+        }
+        input[type="checkbox"] {
+            width: auto;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: purple;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #5e009c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nostr Advanced Search</h1>
+    <form id="searchForm">
+        <div class="form-section">
+            <h3>Words</h3>
+            <label for="allWords">All of these words:</label>
+            <input type="text" id="allWords" name="allWords">
+
+            <label for="exactPhrase">This exact phrase:</label>
+            <input type="text" id="exactPhrase" name="exactPhrase">
+
+            <label for="anyWords">Any of these words:</label>
+            <input type="text" id="anyWords" name="anyWords">
+
+            <label for="noneWords">None of these words:</label>
+            <input type="text" id="noneWords" name="noneWords">
+
+            <label for="hashtags">These hashtags:</label>
+            <input type="text" id="hashtags" name="hashtags">
+
+            <label for="language">Language:</label>
+            <select id="language" name="language">
+                <option value="">Select Language</option>
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <!-- Add more languages as needed -->
+            </select>
+        </div>
+
+        <div class="form-section">
+            <h3>Accounts</h3>
+            <label for="fromAccounts">From these accounts:</label>
+            <input type="text" id="fromAccounts" name="fromAccounts">
+
+            <label for="toAccounts">To these accounts:</label>
+            <input type="text" id="toAccounts" name="toAccounts">
+
+            <label for="mentioningAccounts">Mentioning these accounts:</label>
+            <input type="text" id="mentioningAccounts" name="mentioningAccounts">
+        </div>
+
+        <div class="form-section">
+            <h3>Filters</h3>
+            <label>
+                <input type="checkbox" name="replies" value="replies">
+                Include Replies
+            </label>
+            <label>
+                <input type="checkbox" name="links" value="links">
+                Include Links
+            </label>
+        </div>
+
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Placeholder for Backend Logic -->
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Construct the search query from form inputs
+            const formData = new FormData(event.target);
+            const searchQuery = Object.fromEntries(formData.entries());
+            
+            console.log('Search Query:', searchQuery);
+
+            // Placeholder for backend logic
+            // Send searchQuery to the server for processing
+        });
+    </script>
+</body>
+</html>
