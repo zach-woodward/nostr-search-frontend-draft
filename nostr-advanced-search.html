@@ -104,18 +104,35 @@
 
     <!-- Placeholder for Backend Logic -->
     <script>
-        document.getElementById('searchForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            // Construct the search query from form inputs
-            const formData = new FormData(event.target);
-            const searchQuery = Object.fromEntries(formData.entries());
-            
-            console.log('Search Query:', searchQuery);
-
-            // Placeholder for backend logic
-            // Send searchQuery to the server for processing
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Gather form data
+        const formData = new FormData(event.target);
+        const searchParams = new URLSearchParams(formData).toString();
+    
+        // API endpoint of the Nostr relay
+        const apiEndpoint = 'https://nostr-relay.example.com/search';
+    
+        // Send request to Nostr relay
+        fetch(apiEndpoint, {
+            method: 'POST', // or 'GET', depending on API
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                // Include other headers as required
+            },
+            body: searchParams // for POST request
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Search results:', data);
+            // Process and display search results
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
+    });
+    
     </script>
 </body>
 </html>
